@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form Submission Result</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      .container {
+        margin-top: 50px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        border: 1px solid #dee2e6;
+        padding: 8px;
+        text-align: left;
+      }
+
+      th {
+        background-color: #007bff;
+        color: #ffffff;
+      }
+
+      .exit-btn {
+        margin-top: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <h1 class="display-4">Congratulations!</h1>
+      <p class="lead">Based on your data:</p>
+
+      <table class="table">
+        <tr>
+          <th>Category</th>
+          <th>Details</th>
+        </tr>
+        <tr>
+          <td>City</td>
+          <td><%= cityName %></td>
+        </tr>
+        <tr>
+          <td>Persons</td>
+          <td>Adults: <%= adults %><br />Children: <%= children %></td>
+        </tr>
+        <tr>
+          <td>Phone</td>
+          <td><%= phone %></td>
+        </tr>
+        <tr>
+          <td>Hotel Rating</td>
+          <td><%= hotelRating %></td>
+        </tr>
+        <tr>
+          <td>Date</td>
+          <td>
+            Date of arrival: <%= dateArrival %><br />Date of departure: <%=
+            dateDeparture %>
+          </td>
+        </tr>
+        <tr>
+          <td>Price</td>
+          <td><%= price %>$</td>
+        </tr>
+        <tr>
+          <td>Weather</td>
+          <td>Temperature: <%= temp %><br />Condition: <%= condition %></td>
+        </tr>
+        <form action="/bookTour" method="post">
+          <input type="hidden" name="cityName" value="<%= cityName %>" />
+          <input type="hidden" name="adults" value="<%= adults %>" />
+          <input type="hidden" name="children" value="<%= children %>" />
+          <input type="hidden" name="phone" value="<%= phone %>" />
+          <input type="hidden" name="hotelRating" value="<%= hotelRating %>" />
+          <input type="hidden" name="dateArrival" value="<%= dateArrival %>" />
+          <input
+            type="hidden"
+            name="dateDeparture"
+            value="<%= dateDeparture %>"
+          />
+          <input type="hidden" name="price" value="<%= price %>" />
+          <input type="hidden" name="temp" value="<%= temp %>" />
+          <input type="hidden" name="condition" value="<%= condition %>" />
+          <button type="submit" class="btn btn-success">Save</button>
+        </form>
+      </table>
+
+      <a href="/travelagency" class="btn btn-primary exit-btn">Exit</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>

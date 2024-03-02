@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Agency</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+    />
+    <style>
+      #bookingForm {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(0, 0, 0, 0.5);
+        width: 100%;
+        height: 100%;
+        display: none;
+        z-index: 9999;
+        animation: fadeIn 0.5s;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      #bookingForm form {
+        max-width: 500px;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 2%;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        animation: fadeOut 0.5s;
+      }
+      .carousel-control-next,
+      .carousel-control-prev {
+        width: 2%;
+        top: -175px;
+      }
+      .card {
+        --bs-card-spacer-y: 2rem;
+        --bs-card-spacer-x: 2rem;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Travel Agency</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="./">Home</a>
+            </li>
+            <li class="nav-item active">
+              <a class="nav-link" href="./travelagency">Destinations</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <div class="container mt-4">
+      <h2>Available Tours</h2>
+
+      <div
+        id="carouselExampleControls"
+        class="carousel slide"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="card">
+              <img
+                src="img/paris.jpg"
+                class="card-img-top"
+                style="height: 200px"
+                alt="Italy Rome"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Paris, France</h5>
+                <p class="card-text">
+                  Paris, the city of love and art, awaits you with its elegant
+                  boulevards, majestic museums.
+                </p>
+                <a class="btn btn-primary" onclick="showForm('Paris')"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card">
+              <img
+                src="img/rome.png"
+                class="card-img-top"
+                style="height: 200px"
+                alt="Italy Rome"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Bangkok, Thailand</h5>
+                <p class="card-text">
+                  Experience the bustling city life and rich traditions of
+                  Bangkok in Thailand.
+                </p>
+                <a class="btn btn-primary" onclick="showForm('Bangkok')"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="card">
+              <img
+                src="img/antalia.png"
+                class="card-img-top"
+                style="height: 200px"
+                alt="Turkey Antalia"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Turkey Antalia</h5>
+                <p class="card-text">
+                  Explore the captivating beauty of Antalia in Turkey. Immerse
+                  yourself in the rich history.
+                </p>
+                <a class="btn btn-primary" onclick="showForm('Antalia')"
+                  >Book Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="prev"
+        >
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleControls"
+          data-bs-slide="next"
+        >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+      <div id="bookingForm" style="display: none">
+        <form action="/submitForm" method="post">
+          <div class="form-group">
+            <label for="cityName">City:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="cityName"
+              name="cityName"
+              readonly
+            />
+          </div>
+          <div class="form-group">
+            <label for="adults">Adults:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="adults"
+              name="adults"
+              placeholder="How many adults?"
+            />
+          </div>
+          <div class="form-group">
+            <label for="children">Children:</label>
+            <input
+              type="number"
+              class="form-control"
+              id="children"
+              name="children"
+              placeholder="How many children?"
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="phone"
+              name="phone"
+              placeholder="Enter your phone number"
+            />
+          </div>
+          <div class="form-group">
+            <label for="hotelRating">Hotel Rating:</label>
+            <select class="form-control" id="hotelRating" name="hotelRating">
+              <option value="1">1 Star</option>
+              <option value="2">2 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="5">5 Stars</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Date arrival:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateArrival"
+              name="dateArrival"
+              placeholder="Enter arriving date:"
+            />
+          </div>
+          <div class="form-group">
+            <label for="date">Date departure:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="dateDeparture"
+              name="dateDeparture"
+              placeholder="Enter departure date:"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+          <button type="button" class="btn btn-secondary" onclick="hideForm()">
+            Exit
+          </button>
+        </form>
+      </div>
+    </div>
+    <h3 class="mt-5 text-center">Recent Tours</h3>
+    <div
+      class="row justify-content-center container mt-4"
+      id="tours-container"
+    ></div>
+
+    <div>
+      <footer class="text-center py-4 bg-light">
+        <p>&copy; Travel Agency | All rights reserved | Aubakirov Erlan |</p>
+      </footer>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="	https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.7/axios.min.js"
+      integrity="sha512-NQfB/bDaB8kaSXF8E77JjhHG5PM6XVRxvHzkZiwl3ddWCEPBa23T76MuWSwAJdMGJnmQqM0VeY9kFszsrBEFrQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script type="text/javascript" src="../script.js"></script>
+    <script>
+      async function loadTours() {
+        try {
+          const response = await axios.get("/api/tours"); // Путь к вашему API для получения туров
+          const tours = response.data;
+
+          const container = document.getElementById("tours-container");
+          container.innerHTML = ""; // Очистка контейнера перед добавлением новых туров
+
+          tours.forEach((tour) => {
+            // Создание элемента для каждого тура и добавление его в контейнер
+            const tourElement = document.createElement("div");
+            tourElement.className = "col-md-4 mb-3 ";
+            tourElement.innerHTML = `
+            <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">${tour.cityName}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Date arrival: ${tour.dateArrival}</h6>
+            <p class="card-text">Date departure: ${tour.dateDeparture}</p>
+            <p class="card-text">Adults: ${tour.adults}, Children: ${tour.children}</p>
+            <p class="card-text">Hotel Rating: ${tour.hotelRating} stars</p>
+            <button class="btn btn-primary" onclick="deleteTour('${tour._id}')">Delete</button>
+            <button class="btn btn-secondary" onclick="editTour('${tour._id}')">Edit</button>
+          </div>
+        </div>
+            `;
+            container.appendChild(tourElement);
+          });
+        } catch (error) {
+          console.error("Ошибка при загрузке туров:", error);
+        }
+      }
+
+      window.onload = loadTours; // Вызов функции при загрузке страницы
+      async function deleteTour(id) {
+        await axios
+          .delete(`/travelagency/${id}`)
+          .then((res) => {
+            console.log(res.data);
+            window.onload();
+          })
+          .catch((err) => {
+            console.error(err);
+          });
+      }
+    </script>
+
+    <script>
+      function showForm(cityname) {
+        document.getElementById("bookingForm").style.display = "block";
+        document.getElementById("cityName").value = cityname;
+        console.log("Form is shown");
+      }
+
+      function hideForm() {
+        document.getElementById("bookingForm").style.display = "none";
+        console.log("Form is hidden");
+      }
+
+      function displayTourHistory() {
+        const historyContainer = document.getElementById("historyContainer");
+
+        axios
+          .get("/history")
+          .then((response) => response.json())
+          .then((history) => {
+            historyContainer.innerHTML = "";
+
+            history.forEach((item) => {
+              const historyItem = document.createElement("div");
+              historyItem.innerHTML = `<p>${item.cityName} - ${item.timestamp}</p>`;
+              historyContainer.appendChild(historyItem);
+            });
+          })
+          .catch((error) =>
+            console.error("Error fetching tour history:", error)
+          );
+      }
+
+      displayTourHistory();
+    </script>
+  </body>
+</html>

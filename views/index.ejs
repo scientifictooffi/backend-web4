@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Travel Agency</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+
+      header {
+        background-color: #5bc0de;
+        padding: 10px 0;
+        text-align: center;
+      }
+
+      header a.navbar-brand,
+      header .navbar-nav a.nav-link {
+        color: #ffffff;
+        font-weight: bold;
+        font-family: "Arial", sans-serif;
+        padding: 0 15px; /* Промежуток в навбаре между элементами */
+      }
+
+      main {
+        margin-top: 20px;
+      }
+
+      section.jumbotron {
+        background-color: #ffffff;
+        padding: 30px 0;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      section.advantages {
+        margin-top: 20px;
+        padding: 20px 0;
+        background-color: #ffffff; /* Фон как у остальной страницы */
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      section.container {
+        margin-top: 20px;
+      }
+
+      .card {
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: scale(1.05);
+      }
+
+      footer {
+        background-color: #f8f9fa;
+        padding: 20px 0;
+      }
+    </style>
+    <script>
+      app.get("/", (req, res) => {
+        res.render("index", {
+          isAuthenticated: req.isAuthenticated(),
+          user: req.user ? req.user.username : null,
+        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="mx-auto">
+          <a class="navbar-brand" href="/">Travel Agency</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-toggle="collapse"
+            data-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="./">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="./travelagency">Destinations</a>
+            </li>
+          </ul>
+        </div>
+        
+        <div>
+          <div class="d-flex justify-content-end">
+            <a href="/register" class="btn btn-success mr-2">Registration</a>
+            <a href="/login" class="btn btn-primary">login</a>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="jumbotron text-center">
+        <h1 class="display-4">Discover the World with Us</h1>
+        <a href="./travelagency" class="btn btn-primary btn-lg">Show tour</a>
+        <p class="lead">Why choose us? Exceptional experiences await you!</p>
+      </section>
+
+      <section class="advantages text-center">
+        <h2>Why Choose Us?</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Personalized Service</h5>
+                <p class="card-text">
+                  Our experienced team is dedicated to tailoring your trip to
+                  meet your individual needs and desires.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Exceptional Destinations</h5>
+                <p class="card-text">
+                  Discover unique and breathtaking destinations carefully
+                  selected for their beauty and cultural significance.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="card mb-4">
+              <div class="card-body">
+                <h5 class="card-title">Customer Satisfaction</h5>
+                <p class="card-text">
+                  Our top priority is ensuring your satisfaction. We strive to
+                  exceed your expectations in every aspect of your journey.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <img
+                src="<%= pic1 %>"
+                class="card-img-top"
+                style="height: 200px; object-fit: cover"
+                alt="Destination 1"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Exciting City</h5>
+                <p class="card-text">
+                  Explore the vibrant culture and attractions of Exciting City.
+                  An unforgettable experience awaits!
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <img
+                src="<%= pic2 %>"
+                class="card-img-top"
+                style="height: 200px; object-fit: cover"
+                alt="Destination 2"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Serene Beach Town</h5>
+                <p class="card-text">
+                  Relax on the beautiful beaches of Serene Beach Town. A perfect
+                  destination for a peaceful getaway.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card mb-4">
+              <img
+                src="<%= pic3 %>"
+                class="card-img-top"
+                style="height: 200px; object-fit: cover"
+                alt="Destination 3"
+              />
+              <div class="card-body">
+                <h5 class="card-title">Historic Village</h5>
+                <p class="card-text">
+                  Step back in time and explore the rich history of Historic
+                  Village. A journey through the past awaits you.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="text-center py-4 bg-light">
+      <p>&copy; Travel Agency | All rights reserved | Aubakirov Erlan |</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
