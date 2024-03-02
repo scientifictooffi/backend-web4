@@ -63,7 +63,7 @@ app.post("/bookTour", async (req, res) => {
 
   try {
     await newTourBooking.save();
-    res.send("Tour booked successfully");
+    res.redirect("/");
   } catch (error) {
     console.error("Error booking tour:", error);
     res.status(500).send("Error booking tour");
